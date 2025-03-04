@@ -25,3 +25,36 @@
   .file-list th {
     background: #f8f9fa;
   }
+  
+  .file-list button {
+    margin-right: 5px;
+    border: none;
+    padding: 5px 10px;
+    border-radius: 4px;
+    cursor: pointer;
+    color: white;
+  }
+  
+  .file-list button:nth-child(1) {
+    background: #3498db;
+  }
+  
+  .file-list button:nth-child(1):hover {
+    background: #2980b9;
+  }
+  
+  .file-list button:nth-child(2) {
+    background: #2ecc71;
+  }
+  
+  .file-list button:nth-child(2):hover {
+    background: #27ae60;
+  }
+  
+  .file-list button:nth-child(3) {
+    background: #e74c3c;
+  }
+  
+  .file-list button:nth-child(3):hover {
+    background: #c0392b;
+  }
