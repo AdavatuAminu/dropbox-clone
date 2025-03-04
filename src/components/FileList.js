@@ -2,21 +2,24 @@ import React, { useState, useEffect } from 'react';
 import { list, remove, getUrl } from '@aws-amplify/storage';
 import './FileList.css';
 
-function FileList({ refreshTrigger }) {
+function FileList({ refreshTrigger, currentPath, onNavigate }) {
   const [files, setFiles] = useState([]);
   const [shareUrl, setShareUrl] = useState({});
 
   useEffect(() => {
     fetchFiles();
-  }, [refreshTrigger]);
+  }, [refreshTrigger, currentPath]);
 
   const fetchFiles = async () => {
     try {
-      const fileList = await list({
-        path: 'public/',
-      });
-      console.log('Fetched files:', fileList.items);
-      setFiles(fileList.items);
+      const normalizedPath = currentPath.replace(/\/+$/, '') + '/';
+      const fileList = await list({ path: normalizedPath });
+      const items = fileList.items.map(item => ({
+        ...item,
+        isFolder: item.path.endsWith('/')
+      }));
+      console.log('Fetched files:', items);
+      setFiles(items);
     } catch (error) {
       console.error('Error fetching files:', error);
     }
@@ -35,6 +38,7 @@ function FileList({ refreshTrigger }) {
   };
 
   const handlePreview = async (path) => {
+    if (path.endsWith('/')) return;
     try {
       const key = path.replace('public/', '');
       const { url } = await getUrl({ key });
@@ -46,6 +50,7 @@ function FileList({ refreshTrigger }) {
   };
 
   const handleShare = async (path) => {
+    if (path.endsWith('/')) return;
     try {
       const key = path.replace('public/', '');
       const { url } = await getUrl({
@@ -72,9 +77,35 @@ function FileList({ refreshTrigger }) {
     });
   };
 
+  const handleFolderClick = (path) => {
+    if (!path.endsWith('/')) return;
+    onNavigate(path);
+  };
+
+  const handleBreadcrumbClick = (index) => {
+    const parts = currentPath.split('/').filter(Boolean);
+    const newPath = 'public/' + parts.slice(1, index + 1).join('/') + '/';
+    onNavigate(newPath);
+  };
+
+  const breadcrumbs = currentPath.split('/').filter(Boolean);
+
   return (
     <div className="file-list">
       <h2>Your Files</h2>
+      <div className="breadcrumbs">
+        {breadcrumbs.map((crumb, index) => (
+          <span key={index}>
+            <button 
+              onClick={() => handleBreadcrumbClick(index)}
+              className="breadcrumb-link"
+            >
+              {crumb}
+            </button>
+            {index < breadcrumbs.length - 1 && ' / '}
+          </span>
+        ))}
+      </div>
       <table>
         <thead>
           <tr>
@@ -87,25 +118,36 @@ function FileList({ refreshTrigger }) {
         <tbody>
           {files.map((file) => (
             <tr key={file.path}>
-              <td>{file.path.replace('public/', '')}</td>
+              <td>
+                <span 
+                  onClick={() => handleFolderClick(file.path)}
+                  className={file.isFolder ? 'folder' : ''}
+                >
+                  {file.path.replace(currentPath, '')}
+                </span>
+              </td>
               <td>{file.size ? (file.size / 1024).toFixed(2) : 'N/A'} KB</td>
               <td>1</td>
               <td>
-                <button onClick={() => handlePreview(file.path)}>Preview</button>
-                <button onClick={() => handleShare(file.path)}>Share</button>
-                {shareUrl[file.path] && (
-                  <div className="share-container">
-                    <input
-                      type="text"
-                      value={shareUrl[file.path]}
-                      readOnly
-                      className="share-url"
-                    />
-                    <button onClick={() => handleCopy(file.path)}>Copy</button>
-                    <button onClick={() => clearShareUrl(file.path)}>X</button>
-                  </div>
+                {!file.isFolder && (
+                  <>
+                    <button onClick={() => handlePreview(file.path)}>Preview</button>
+                    <button onClick={() => handleShare(file.path)}>Share</button>
+                    {shareUrl[file.path] && (
+                      <div className="share-container">
+                        <input
+                          type="text"
+                          value={shareUrl[file.path]}
+                          readOnly
+                          className="share-url"
+                        />
+                        <button onClick={() => handleCopy(file.path)}>Copy</button>
+                        <button onClick={() => clearShareUrl(file.path)}>X</button>
+                      </div>
+                    )}
+                    <button onClick={() => handleDelete(file.path)}>Delete</button>
+                  </>
                 )}
-                <button onClick={() => handleDelete(file.path)}>Delete</button>
               </td>
             </tr>
           ))}

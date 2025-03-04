@@ -3,10 +3,20 @@
     padding: 20px;
     border-radius: 8px;
     box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+    display: flex;
+    gap: 10px;
+    align-items: center;
   }
   
-  .file-upload input {
+  .file-upload input[type="file"] {
     margin-right: 10px;
+  }
+  
+  .file-upload .folder-input {
+    padding: 8px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    flex-grow: 1;
   }
   
   .file-upload button {

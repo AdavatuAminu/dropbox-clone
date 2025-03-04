@@ -6,8 +6,15 @@ import './App.css';
 
 function App() {
   const [refreshTrigger, setRefreshTrigger] = useState(0);
+  const [currentPath, setCurrentPath] = useState('public/');
 
   const handleUploadComplete = () => {
+    setRefreshTrigger(prev => prev + 1);
+  };
+
+  const handleNavigate = (path) => {
+    console.log('Navigating to:', path);
+    setCurrentPath(path);
     setRefreshTrigger(prev => prev + 1);
   };
 
@@ -17,8 +24,15 @@ function App() {
         <h1>Dropbox Clone</h1>
       </header>
       <main>
-        <FileUpload onUploadComplete={handleUploadComplete} />
-        <FileList refreshTrigger={refreshTrigger} />
+        <FileUpload 
+          onUploadComplete={handleUploadComplete} 
+          currentPath={currentPath} 
+        />
+        <FileList 
+          refreshTrigger={refreshTrigger} 
+          currentPath={currentPath} 
+          onNavigate={handleNavigate} 
+        />
       </main>
     </div>
   );
