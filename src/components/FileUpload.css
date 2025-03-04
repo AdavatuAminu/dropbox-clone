@@ -1,0 +1,24 @@
+.file-upload {
+    background: white;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+  }
+  
+  .file-upload input {
+    margin-right: 10px;
+  }
+  
+  .file-upload button {
+    background: #3498db;
+    color: white;
+    border: none;
+    padding: 8px 16px;
+    border-radius: 4px;
+    cursor: pointer;
+  }
+  
+  .file-upload button:disabled {
+    background: #bdc3c7;
+    cursor: not-allowed;
+  }

@@ -10,6 +10,14 @@
       "StackName": "amplify-dropboxclone-dev-942f7",
       "StackId": "arn:aws:cloudformation:eu-central-1:664418993634:stack/amplify-dropboxclone-dev-942f7/2d68dd50-f8de-11ef-bd34-06bc29f1a339",
       "AmplifyAppId": "d15440zbzngq6u"
+    },
+    "categories": {
+      "auth": {
+        "dropboxcloneb896e3df": {}
+      },
+      "storage": {
+        "s38edb7e61": {}
+      }
     }
   }
 }

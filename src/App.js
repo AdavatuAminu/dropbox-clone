@@ -1,25 +1,27 @@
-import logo from './logo.svg';
+import React, { useState } from 'react';
+import { withAuthenticator } from '@aws-amplify/ui-react';
+import FileUpload from './components/FileUpload';
+import FileList from './components/FileList';
 import './App.css';
 
 function App() {
+  const [refreshTrigger, setRefreshTrigger] = useState(0);
+
+  const handleUploadComplete = () => {
+    setRefreshTrigger(prev => prev + 1);
+  };
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
+    <div className="app">
+      <header className="app-header">
+        <h1>Dropbox Clone</h1>
       </header>
+      <main>
+        <FileUpload onUploadComplete={handleUploadComplete} />
+        <FileList refreshTrigger={refreshTrigger} />
+      </main>
     </div>
   );
 }
 
-export default App;
+export default withAuthenticator(App);
