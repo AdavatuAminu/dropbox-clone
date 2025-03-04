@@ -12,6 +12,27 @@
   padding: 20px;
   border-radius: 8px;
   margin-bottom: 20px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.nav-buttons button {
+  background: #34495e;
+  color: white;
+  border: none;
+  padding: 8px 16px;
+  margin-left: 10px;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.nav-buttons button.active {
+  background: #3498db;
+}
+
+.nav-buttons button:hover:not(.active) {
+  background: #3d5a74;
 }
 
 main {
