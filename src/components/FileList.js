@@ -4,6 +4,7 @@ import './FileList.css';
 
 function FileList({ refreshTrigger }) {
   const [files, setFiles] = useState([]);
+  const [shareUrl, setShareUrl] = useState({});
 
   useEffect(() => {
     fetchFiles();
@@ -51,11 +52,24 @@ function FileList({ refreshTrigger }) {
         key,
         options: { expiresIn: 604800 }
       });
-      alert(`Share this link (expires in 7 days): ${url}`);
+      setShareUrl((prev) => ({ ...prev, [path]: url }));
     } catch (error) {
       console.error('Error generating share link:', error);
       alert('Share link generation failed!');
     }
+  };
+
+  const handleCopy = (path) => {
+    navigator.clipboard.writeText(shareUrl[path]);
+    alert('Link copied to clipboard!');
+  };
+
+  const clearShareUrl = (path) => {
+    setShareUrl((prev) => {
+      const newUrls = { ...prev };
+      delete newUrls[path];
+      return newUrls;
+    });
   };
 
   return (
@@ -79,6 +93,18 @@ function FileList({ refreshTrigger }) {
               <td>
                 <button onClick={() => handlePreview(file.path)}>Preview</button>
                 <button onClick={() => handleShare(file.path)}>Share</button>
+                {shareUrl[file.path] && (
+                  <div className="share-container">
+                    <input
+                      type="text"
+                      value={shareUrl[file.path]}
+                      readOnly
+                      className="share-url"
+                    />
+                    <button onClick={() => handleCopy(file.path)}>Copy</button>
+                    <button onClick={() => clearShareUrl(file.path)}>X</button>
+                  </div>
+                )}
                 <button onClick={() => handleDelete(file.path)}>Delete</button>
               </td>
             </tr>

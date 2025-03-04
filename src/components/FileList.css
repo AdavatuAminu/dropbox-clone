@@ -58,3 +58,37 @@
   .file-list button:nth-child(3):hover {
     background: #c0392b;
   }
+  
+  .share-container {
+    margin-top: 5px;
+    display: flex;
+    align-items: center;
+  }
+  
+  .share-url {
+    flex-grow: 1;
+    padding: 5px;
+    margin-right: 5px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    font-size: 12px;
+    max-width: 200px;
+  }
+  
+  .share-container button:nth-child(2) {
+    background: #f1c40f;
+    color: black;
+  }
+  
+  .share-container button:nth-child(2):hover {
+    background: #d4ac0d;
+  }
+  
+  .share-container button:nth-child(3) {
+    background: #95a5a6;
+    padding: 5px 8px;
+  }
+  
+  .share-container button:nth-child(3):hover {
+    background: #7f8c8d;
+  }
