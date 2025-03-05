@@ -27,20 +27,56 @@
 }
 
 .sign-out-button {
-  background: #0061ff !important;
-  color: white !important;
-  padding: 8px 16px !important;
-  border-radius: 4px !important;
-  border: none !important;
+  background: none;
+  border: none;
+  color: #0061ff;
   cursor: pointer;
-}
-
-.sign-out-button:hover {
-  background: #0051cc !important;
 }
 
 main {
   display: flex;
   flex-direction: column;
   gap: 20px;
+}
+
+[data-amplify-authenticator] {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  background: #f7f9fc;
+}
+
+[data-amplify-form] {
+  background: #ffffff;
+  padding: 40px;
+  border: 1px solid #e6e9ef;
+  border-radius: 4px;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+  width: 100%;
+  max-width: 400px;
+}
+
+[data-amplify-form] .btn-primary {
+  background-color: #0061ff;
+  border-color: #0061ff;
+}
+
+[data-amplify-form] .btn-primary:hover {
+  background-color: #0051cc;
+  border-color: #0051cc;
+}
+
+[data-amplify-form] .form-label {
+  color: #162d3d;
+  font-weight: 500;
+}
+
+[data-amplify-form] .form-control {
+  border-color: #e6e9ef;
+}
+
+[data-amplify-form] .form-control:focus {
+  border-color: #0061ff;
+  box-shadow: 0 0 0 0.2rem rgba(0, 97, 255, 0.25);
 }

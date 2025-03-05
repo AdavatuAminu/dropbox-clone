@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { withAuthenticator, Button } from '@aws-amplify/ui-react';
+import { withAuthenticator } from '@aws-amplify/ui-react';
 import { signOut } from '@aws-amplify/auth';
 import FileUpload from './components/FileUpload';
 import FileList from './components/FileList';
@@ -36,9 +36,9 @@ function App() {
       <div className="main-content">
         <header className="app-header">
           <h1>{view === 'files' ? 'Files' : 'Profile'}</h1>
-          <Button onClick={handleSignOut} className="sign-out-button">
+          <button className="btn btn-danger sign-out-button" onClick={handleSignOut}>
             Sign Out
-          </Button>
+          </button>
         </header>
         <main>
           {view === 'files' ? (
@@ -61,5 +61,61 @@ function App() {
     </div>
   );
 }
+const components = {
+  Header() {
+    return (
+      <div className="text-center mb-4">
+      </div>
+    );
+  },
+  SignIn: {
+    Header() {
+      return (
+        <h4 className="text-center text-dark mb-4">
+          Sign in to your account
+        </h4>
+      );
+    },
+    Footer() {
+      return null;
+    },
+    Username(props) {
+      return (
+        <div className="mb-3">
+          <label htmlFor="username" className="form-label">Email</label>
+          <input
+            {...props}
+            id="username"
+            className="form-control"
+            placeholder="Enter your email"
+          />
+        </div>
+      );
+    },
+    Password(props) {
+      return (
+        <div className="mb-3">
+          <label htmlFor="password" className="form-label">Password</label>
+          <input
+            {...props}
+            id="password"
+            className="form-control"
+            placeholder="Enter your password"
+          />
+        </div>
+      );
+    },
+    Button(props) {
+      return (
+        <button
+          {...props}
+          className="btn btn-primary w-100"
+        >
+          Sign In
+        </button>
+      );
+    },
+  },
+};
 
-export default withAuthenticator(App);
+export default withAuthenticator(App, { components });

@@ -12,7 +12,7 @@
 .breadcrumb-link {
   background: none;
   border: none;
-  color: #0061ff;
+  color: #7700ff;
   cursor: pointer;
   padding: 0;
   font-size: 14px;
@@ -42,12 +42,12 @@
 
 .file-list button {
   margin-right: 5px;
-  border: none;
   padding: 6px 12px;
   border-radius: 4px;
   cursor: pointer;
   color: white;
-  background: #0061ff;
+  background: #7700ff;
+  border: none;
 }
 
 .file-list button:hover {

@@ -5,7 +5,7 @@ function Sidebar({ currentView, setView }) {
   return (
     <div className="sidebar">
       <div className="logo">
-        <h2>Dropbox Clone</h2>
+        <h2>My Dropbox-Clone</h2>
       </div>
       <nav>
         <button 

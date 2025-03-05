@@ -49,14 +49,6 @@ function FileUpload({ onUploadComplete, currentPath }) {
         onChange={handleFileChange}
         disabled={uploading}
       />
-      <input
-        type="text"
-        placeholder="Folder name (optional)"
-        value={folder}
-        onChange={handleFolderChange}
-        disabled={uploading}
-        className="folder-input"
-      />
       <button 
         onClick={handleUpload}
         disabled={!file || uploading}

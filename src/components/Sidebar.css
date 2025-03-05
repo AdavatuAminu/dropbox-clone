@@ -14,7 +14,7 @@
   }
   
   .logo h2 {
-    color: #0061ff;
+    color: #7700ff;
     font-size: 24px;
     margin: 0;
   }
@@ -39,7 +39,7 @@
   }
   
   nav button.active {
-    background: #0061ff;
+    background: #7700ff;
     color: white;
   }
   
