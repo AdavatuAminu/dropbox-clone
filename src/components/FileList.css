@@ -1,120 +1,99 @@
 .file-list {
-    background: white;
-    padding: 20px;
-    border-radius: 8px;
-    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
-  }
-  
-  .file-list h2 {
-    margin-top: 0;
-    color: #2c3e50;
-  }
-  
-  .breadcrumbs {
-    margin-bottom: 10px;
-  }
-  
-  .breadcrumb-link {
-    background: none;
-    border: none;
-    color: #3498db;
-    cursor: pointer;
-    padding: 0;
-    font-size: 14px;
-  }
-  
-  .breadcrumb-link:hover {
-    text-decoration: underline;
-  }
-  
-  .file-list table {
-    width: 100%;
-    border-collapse: collapse;
-  }
-  
-  .file-list th,
-  .file-list td {
-    padding: 10px;
-    text-align: left;
-    border-bottom: 1px solid #eee;
-  }
-  
-  .file-list th {
-    background: #f8f9fa;
-  }
-  
-  .file-list button {
-    margin-right: 5px;
-    border: none;
-    padding: 5px 10px;
-    border-radius: 4px;
-    cursor: pointer;
-    color: white;
-  }
-  
-  .file-list button:nth-child(1) {
-    background: #3498db;
-  }
-  
-  .file-list button:nth-child(1):hover {
-    background: #2980b9;
-  }
-  
-  .file-list button:nth-child(2) {
-    background: #2ecc71;
-  }
-  
-  .file-list button:nth-child(2):hover {
-    background: #27ae60;
-  }
-  
-  .file-list button:nth-child(3) {
-    background: #e74c3c;
-  }
-  
-  .file-list button:nth-child(3):hover {
-    background: #c0392b;
-  }
-  
-  .folder {
-    color: #e67e22;
-    cursor: pointer;
-  }
-  
-  .folder:hover {
-    text-decoration: underline;
-  }
-  
-  .share-container {
-    margin-top: 5px;
-    display: flex;
-    align-items: center;
-  }
-  
-  .share-url {
-    flex-grow: 1;
-    padding: 5px;
-    margin-right: 5px;
-    border: 1px solid #ddd;
-    border-radius: 4px;
-    font-size: 12px;
-    max-width: 200px;
-  }
-  
-  .share-container button:nth-child(2) {
-    background: #f1c40f;
-    color: black;
-  }
-  
-  .share-container button:nth-child(2):hover {
-    background: #d4ac0d;
-  }
-  
-  .share-container button:nth-child(3) {
-    background: #95a5a6;
-    padding: 5px 8px;
-  }
-  
-  .share-container button:nth-child(3):hover {
-    background: #7f8c8d;
-  }
+  background: #ffffff;
+  padding: 20px;
+  border: 1px solid #e6e9ef;
+  border-radius: 4px;
+}
+
+.breadcrumbs {
+  margin-bottom: 10px;
+}
+
+.breadcrumb-link {
+  background: none;
+  border: none;
+  color: #0061ff;
+  cursor: pointer;
+  padding: 0;
+  font-size: 14px;
+}
+
+.breadcrumb-link:hover {
+  text-decoration: underline;
+}
+
+.file-list table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.file-list th,
+.file-list td {
+  padding: 12px;
+  text-align: left;
+  border-bottom: 1px solid #e6e9ef;
+  color: #162d3d;
+}
+
+.file-list th {
+  background: #f7f9fc;
+  font-weight: 600;
+}
+
+.file-list button {
+  margin-right: 5px;
+  border: none;
+  padding: 6px 12px;
+  border-radius: 4px;
+  cursor: pointer;
+  color: white;
+  background: #0061ff;
+}
+
+.file-list button:hover {
+  background: #0051cc;
+}
+
+.folder {
+  color: #0061ff;
+  cursor: pointer;
+}
+
+.folder:hover {
+  text-decoration: underline;
+}
+
+.share-container {
+  margin-top: 5px;
+  display: flex;
+  align-items: center;
+}
+
+.share-url {
+  flex-grow: 1;
+  padding: 6px;
+  margin-right: 5px;
+  border: 1px solid #e6e9ef;
+  border-radius: 4px;
+  font-size: 12px;
+  max-width: 200px;
+  color: #162d3d;
+}
+
+.share-container button:nth-child(2) {
+  background: #f1c40f;
+  color: black;
+}
+
+.share-container button:nth-child(2):hover {
+  background: #d4ac0d;
+}
+
+.share-container button:nth-child(3) {
+  background: #95a5a6;
+  padding: 6px 8px;
+}
+
+.share-container button:nth-child(3):hover {
+  background: #7f8c8d;
+}

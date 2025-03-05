@@ -92,7 +92,6 @@ function FileList({ refreshTrigger, currentPath, onNavigate }) {
 
   return (
     <div className="file-list">
-      <h2>Your Files</h2>
       <div className="breadcrumbs">
         {breadcrumbs.map((crumb, index) => (
           <span key={index}>
@@ -123,6 +122,7 @@ function FileList({ refreshTrigger, currentPath, onNavigate }) {
                   onClick={() => handleFolderClick(file.path)}
                   className={file.isFolder ? 'folder' : ''}
                 >
+                  {file.isFolder ? '📁 ' : '📄 '}
                   {file.path.replace(currentPath, '')}
                 </span>
               </td>

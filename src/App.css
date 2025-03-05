@@ -1,38 +1,42 @@
 .app {
-  max-width: 1200px;
-  margin: 0 auto;
-  padding: 20px;
-  background: #f5f6fa;
+  display: flex;
+  background: #ffffff;
   min-height: 100vh;
 }
 
-.app-header {
-  background: #2c3e50;
-  color: white;
+.main-content {
+  margin-left: 250px;
+  flex-grow: 1;
   padding: 20px;
-  border-radius: 8px;
-  margin-bottom: 20px;
+}
+
+.app-header {
   display: flex;
   justify-content: space-between;
   align-items: center;
+  padding: 10px 20px;
+  background: #ffffff;
+  border-bottom: 1px solid #e6e9ef;
+  margin-bottom: 20px;
 }
 
-.nav-buttons button {
-  background: #34495e;
-  color: white;
-  border: none;
-  padding: 8px 16px;
-  margin-left: 10px;
-  border-radius: 4px;
+.app-header h1 {
+  color: #162d3d;
+  font-size: 24px;
+  margin: 0;
+}
+
+.sign-out-button {
+  background: #0061ff !important;
+  color: white !important;
+  padding: 8px 16px !important;
+  border-radius: 4px !important;
+  border: none !important;
   cursor: pointer;
 }
 
-.nav-buttons button.active {
-  background: #3498db;
-}
-
-.nav-buttons button:hover:not(.active) {
-  background: #3d5a74;
+.sign-out-button:hover {
+  background: #0051cc !important;
 }
 
 main {

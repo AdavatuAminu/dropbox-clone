@@ -1,8 +1,10 @@
 import React, { useState } from 'react';
-import { withAuthenticator } from '@aws-amplify/ui-react';
+import { withAuthenticator, Button } from '@aws-amplify/ui-react';
+import { signOut } from '@aws-amplify/auth';
 import FileUpload from './components/FileUpload';
 import FileList from './components/FileList';
 import Profile from './components/Profile';
+import Sidebar from './components/Sidebar';
 import './App.css';
 
 function App() {
@@ -20,42 +22,42 @@ function App() {
     setRefreshTrigger(prev => prev + 1);
   };
 
+  const handleSignOut = async () => {
+    try {
+      await signOut();
+    } catch (error) {
+      console.error('Error signing out:', error);
+    }
+  };
+
   return (
     <div className="app">
-      <header className="app-header">
-        <h1>Dropbox Clone</h1>
-        <div className="nav-buttons">
-          <button 
-            onClick={() => setView('files')}
-            className={view === 'files' ? 'active' : ''}
-          >
-            Files
-          </button>
-          <button 
-            onClick={() => setView('profile')}
-            className={view === 'profile' ? 'active' : ''}
-          >
-            Profile
-          </button>
-        </div>
-      </header>
-      <main>
-        {view === 'files' ? (
-          <>
-            <FileUpload 
-              onUploadComplete={handleUploadComplete} 
-              currentPath={currentPath} 
-            />
-            <FileList 
-              refreshTrigger={refreshTrigger} 
-              currentPath={currentPath} 
-              onNavigate={handleNavigate} 
-            />
-          </>
-        ) : (
-          <Profile />
-        )}
-      </main>
+      <Sidebar currentView={view} setView={setView} />
+      <div className="main-content">
+        <header className="app-header">
+          <h1>{view === 'files' ? 'Files' : 'Profile'}</h1>
+          <Button onClick={handleSignOut} className="sign-out-button">
+            Sign Out
+          </Button>
+        </header>
+        <main>
+          {view === 'files' ? (
+            <>
+              <FileUpload 
+                onUploadComplete={handleUploadComplete} 
+                currentPath={currentPath} 
+              />
+              <FileList 
+                refreshTrigger={refreshTrigger} 
+                currentPath={currentPath} 
+                onNavigate={handleNavigate} 
+              />
+            </>
+          ) : (
+            <Profile />
+          )}
+        </main>
+      </div>
     </div>
   );
 }

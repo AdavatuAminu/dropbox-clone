@@ -40,7 +40,6 @@ function Profile() {
     }
     setSaving(true);
     try {
-      // Filter out empty or undefined attributes
       const attributesToUpdate = {};
       if (email) attributesToUpdate.email = email;
       if (name) attributesToUpdate.name = name;
@@ -52,8 +51,8 @@ function Profile() {
       }
 
       await updateUserAttributes(attributesToUpdate);
+      console.log('Attributes updated:', attributesToUpdate);
       alert('Profile updated successfully!');
-      // Refresh attributes after update
       const attributes = await fetchUserAttributes();
       setEmail(attributes.email || '');
       setName(attributes.name || '');
@@ -69,7 +68,6 @@ function Profile() {
 
   return (
     <div className="profile">
-      <h2>Your Profile</h2>
       <div className="profile-field">
         <label>Username:</label>
         <input
